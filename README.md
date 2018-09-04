@@ -13,4 +13,4 @@ A equipe que compõe o projeto é formada por pelos seguintes membros:
 
 A primeira entrega consiste na definição das equipes e escopo do projeto, URL do projeto, com doc com membros da equipe, login e proposta de aplicação a ser modelada durante o curso.
 
-O documento sobre a aplicação encontra-se disponível [aqui](www.google.com)
+O documento sobre a aplicação encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/raw/master/Entregas/Modelagem%20Caso%20de%20Uso.pdf).
