@@ -16,7 +16,7 @@ export class CrudServiceService {
     var cabe = new Headers();
     console.log(params)
     cabe.append('Content-Type', 'application/json');
-    return this._http.post('http://validate.jsontest.com', 
+    return this._http.post('/users', 
     json).map(res=> res.json());
 
 
