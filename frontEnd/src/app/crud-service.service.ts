@@ -10,7 +10,7 @@ export class CrudServiceService {
 
   constructor(private _http : Http) {   }
 
-  postJSON(login: String, senha: String){
+  login(login: String, senha: String){
     var json = JSON.stringify({login: login, password: senha});
     var params = 'json=' + json;
     var cabe = new Headers();
@@ -21,8 +21,20 @@ export class CrudServiceService {
       headers: cabe
     }).map(res=> res.json());
 
-
   }
 
+  cadastro(login: String, senha: String, email: String){
+    var json = JSON.stringify({login: login, password: senha, email: String});
+    var params = 'json=' + json;
+    var cabe = new Headers();
+    console.log(params)
+    cabe.append('Content-Type', 'application/json');
+    return this._http.post('/users', 
+    json, {
+      headers: cabe
+    }).map(res=> res.json());
+
   
+}
+
 }

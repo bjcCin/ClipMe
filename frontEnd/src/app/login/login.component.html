@@ -21,7 +21,10 @@
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="senha" ngModel>
             </div>
 
-            <button type="submit" class="btn btn-primary" [routerLink] = "['/cadastro']">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="forgot">
+                <a [routerLink]="[cadastro]">Deseja cadastra-se?</a>
+            </div>
   
     
         </form>

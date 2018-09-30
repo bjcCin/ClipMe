@@ -20,21 +20,18 @@ export class LoginComponent implements OnInit {
   }
 
   onClickLogin(form){
-    this.router.navigateByUrl('/cadastro')
-    this.login = form.value.senha
-    // console.log(form)
-    // this.onTestPost(form.value.login,form.value.senha)
+    this.onTestPost(form.value.login,form.value.senha)
    }
 
   onTestPost(login: String, senha: String) {
-    this.httpService.postJSON(login, senha)
+    this.httpService.login(login, senha)
     .subscribe(
        data => {this.postData = JSON.stringify(data)
-         data="true"
          if(data=="false"){
            this.loginIncorreto = true
          } else {
-           this.router.navigate([`/templateEdit/`], { relativeTo: this.route });
+           console.log("login funcionou")
+          // this.router.navigate(['cadastro'], { relativeTo: this.route });
          }
        },
        error => alert(error),
