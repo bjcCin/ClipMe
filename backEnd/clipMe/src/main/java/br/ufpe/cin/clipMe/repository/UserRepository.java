@@ -6,4 +6,5 @@ import br.ufpe.cin.clipMe.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	User findByLogin(String login);
 }
