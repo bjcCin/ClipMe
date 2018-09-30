@@ -24,7 +24,9 @@ export class CrudServiceService {
   }
 
   cadastro(login: String, senha: String, email: String){
-    var json = JSON.stringify({login: login, password: senha, email: String});
+    
+    var json = JSON.stringify({email: email, login: login, senha: senha});
+    console.log("service", json)
     var params = 'json=' + json;
     var cabe = new Headers();
     console.log(params)
