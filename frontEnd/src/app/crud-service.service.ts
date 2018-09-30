@@ -11,13 +11,15 @@ export class CrudServiceService {
   constructor(private _http : Http) {   }
 
   postJSON(login: String, senha: String){
-    var json = JSON.stringify({login: login, senha: senha});
+    var json = JSON.stringify({login: login, password: senha});
     var params = 'json=' + json;
     var cabe = new Headers();
     console.log(params)
     cabe.append('Content-Type', 'application/json');
-    return this._http.post('/users', 
-    json).map(res=> res.json());
+    return this._http.post('/login', 
+    json, {
+      headers: cabe
+    }).map(res=> res.json());
 
 
   }

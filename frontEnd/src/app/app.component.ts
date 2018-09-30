@@ -20,7 +20,9 @@ export class AppComponent {
     onTestPost(login: String, senha: String) {
        this.httpService.postJSON(login, senha)
        .subscribe(
-          data => this.postData = JSON.stringify(data),
+          data => {this.postData = JSON.stringify(data)
+            console.log("TESTE: ",data)
+          },
           error => alert(error),
           () => console.log("acesso a webapi post ok...")
        );
