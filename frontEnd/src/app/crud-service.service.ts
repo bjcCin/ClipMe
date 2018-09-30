@@ -23,13 +23,12 @@ export class CrudServiceService {
 
   }
 
-  cadastro(login: String, senha: String, email: String){
+  cadastro(email: String, login: String, password: String){
     
-    var json = JSON.stringify({email: email, login: login, senha: senha});
+    var json = JSON.stringify({email: email, login: login, password: password});
     console.log("service", json)
     var params = 'json=' + json;
     var cabe = new Headers();
-    console.log(params)
     cabe.append('Content-Type', 'application/json');
     return this._http.post('/users', 
     json, {
