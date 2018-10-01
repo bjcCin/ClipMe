@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import br.ufpe.cin.clipMe.model.User;
-import br.ufpe.cin.clipMe.repository.UserRepository;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryUser;
 
 public class UserController {
 	
@@ -21,15 +21,15 @@ public class UserController {
 		return instance;
 	}
 
-	public User add(UserRepository repository, User entity) {
+	public User add(InterfaceRepositoryUser repository, User entity) {
 		return repository.save(entity);
 	}
 	
-	public List<User> retrieveAll(UserRepository repository) {
+	public List<User> retrieveAll(InterfaceRepositoryUser repository) {
 		return repository.findAll();
 	}
 	
-	public User retrieve(UserRepository repository, long id) {
+	public User retrieve(InterfaceRepositoryUser repository, long id) {
 		Optional<User> optional = repository.findById(id);
 		if (!optional.isPresent()){
 
@@ -37,11 +37,11 @@ public class UserController {
 		return optional.get();
 	}
 	
-	public void delete(UserRepository repository, long id) {
+	public void delete(InterfaceRepositoryUser repository, long id) {
 		repository.deleteById(id);
 	}
 	
-	public ResponseEntity<Object> update(UserRepository repository, User entity, @PathVariable long id) {
+	public ResponseEntity<Object> update(InterfaceRepositoryUser repository, User entity, @PathVariable long id) {
 
 		Optional<User> optional = repository.findById(id);
 

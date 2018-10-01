@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import br.ufpe.cin.clipMe.model.Template;
-import br.ufpe.cin.clipMe.repository.TemplateRepository;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryTemplate;
 
 public class TemplateController {
 	
@@ -21,15 +21,15 @@ public class TemplateController {
 		return instance;
 	}
 
-	public Template add(TemplateRepository repository, Template entity) {
+	public Template add(InterfaceRepositoryTemplate repository, Template entity) {
 		return repository.save(entity);
 	}
 	
-	public List<Template> retrieveAll(TemplateRepository repository) {
+	public List<Template> retrieveAll(InterfaceRepositoryTemplate repository) {
 		return repository.findAll();
 	}
 	
-	public Template retrieve(TemplateRepository repository, long id) {
+	public Template retrieve(InterfaceRepositoryTemplate repository, long id) {
 		Optional<Template> optional = repository.findById(id);
 		if (!optional.isPresent()){
 
@@ -37,11 +37,11 @@ public class TemplateController {
 		return optional.get();
 	}
 	
-	public void delete(TemplateRepository repository, long id) {
+	public void delete(InterfaceRepositoryTemplate repository, long id) {
 		repository.deleteById(id);
 	}
 	
-	public ResponseEntity<Object> update(TemplateRepository repository, Template entity, @PathVariable long id) {
+	public ResponseEntity<Object> update(InterfaceRepositoryTemplate repository, Template entity, @PathVariable long id) {
 
 		Optional<Template> optional = repository.findById(id);
 

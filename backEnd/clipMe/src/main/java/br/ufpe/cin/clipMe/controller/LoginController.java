@@ -1,7 +1,7 @@
 package br.ufpe.cin.clipMe.controller;
 
 import br.ufpe.cin.clipMe.model.User;
-import br.ufpe.cin.clipMe.repository.UserRepository;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryUser;
 
 public class LoginController {
 	
@@ -15,7 +15,7 @@ public class LoginController {
 		return instance;
 	}
 
-	public boolean login(UserRepository repository, User entity) {
+	public boolean login(InterfaceRepositoryUser repository, User entity) {
 		
 		if(entity.getLogin() == null || entity.getPassword() == null){
 			return false;

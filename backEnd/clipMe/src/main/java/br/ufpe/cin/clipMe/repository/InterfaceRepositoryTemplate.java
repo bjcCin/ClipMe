@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.ufpe.cin.clipMe.model.Template;
 
-public interface TemplateRepository extends JpaRepository<Template, Long>{
+public interface InterfaceRepositoryTemplate extends JpaRepository<Template, Long>{
 
 }

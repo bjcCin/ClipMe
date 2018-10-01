@@ -20,18 +20,18 @@ import br.ufpe.cin.clipMe.controller.TemplateController;
 import br.ufpe.cin.clipMe.controller.UserController;
 import br.ufpe.cin.clipMe.model.Template;
 import br.ufpe.cin.clipMe.model.User;
-import br.ufpe.cin.clipMe.repository.TemplateRepository;
-import br.ufpe.cin.clipMe.repository.UserRepository;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryTemplate;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryUser;
 
 @RestController
 @RequestMapping("/")
 public class ClipMeFacade {
 
 	@Autowired
-	private UserRepository userRepository;
+	private InterfaceRepositoryUser userRepository;
 	
 	@Autowired
-	private TemplateRepository templateRepository;
+	private InterfaceRepositoryTemplate templateRepository;
 
 	//Singleton
 	private TemplateController templateController = TemplateController.getInstance();
