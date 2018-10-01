@@ -36,7 +36,7 @@
           <div class="container">
           <p class="lead d-none d-sm-block">Editar usuário <strong>{{usuarioEdicaoLogin}}</strong></p>
 
-          <form id="Editar" #f="ngForm" (ngSubmit)="onClickSalvar(f)">
+          <form id="Editar" #u="ngForm" (ngSubmit)="onClickSalvar(u)">
 
               <div class="form-group">
                   <label>Email</label>
@@ -65,21 +65,21 @@
     <div class="container">
     <p class="lead d-none d-sm-block">Cadastrar novo usuário</p>
 
-    <form id="Editar" #f="ngForm" (ngSubmit)="onClickCadastrar(f)">
+    <form id="Cadastrar" #f="ngForm" (ngSubmit)="onClickSalvarCadastro(f)">
 
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" id="inputEmail" value="{{usuarioEdicaoEmail}}" name="email" ngModel>
+            <input type="email" class="form-control" id="inputEmail2"  name="email" ngModel>
         </div>
 
         <div class="form-group">
             <label>Login</label>
-            <input type="text" class="form-control" id="inputLogin" value="{{usuarioEdicaoLogin}}" name="login" ngModel>
+            <input type="text" class="form-control" id="inputLogin2"  name="login" ngModel>
         </div>
 
         <div class="form-group">
             <label>Senha</label>
-            <input type="password" class="form-control" id="inputPassword" value="{{usuarioEdicaoPassword}}" name="password" ngModel>
+            <input type="password" class="form-control" id="inputPassword2"  name="password" ngModel>
         </div>
 
         <button type="submit" class="btn btn-primary" style="margin-bottom: 40px">Cadastrar</button>

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
          if(data==false){
            this.loginIncorreto = true
          } else {
-          this.router.navigate(['/templateEdit'], { relativeTo: this.route });
+          this.router.navigate(['/editartemplate'], { relativeTo: this.route });
          }
        },
        error => alert(error),

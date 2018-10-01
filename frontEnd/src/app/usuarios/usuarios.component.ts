@@ -26,11 +26,6 @@ export class UsuariosComponent implements OnInit {
     this.httpService.listarUsuarios().subscribe(res=>{
       this.usuarios = res.json();
       this.usuarios = Array.of(this.usuarios)[0];
-      
-      console.log(this.usuarios)
-      
-      //this.usuarios = Array.of(res["_body"])
-
 
     })
   }
@@ -49,24 +44,29 @@ export class UsuariosComponent implements OnInit {
     this.usuarioEdicaoLogin = user.login
     this.usuarioEdicaoEmail = user.email
     this.usuarioEdicaoPassword = user.password  
+    console.log(user)
   }
 
   onClickSalvar(form){
-    console.log(form)
+    console.log(form.value)
+    console.log(this.usuarioEdicao.id,this.usuarioEdicaoEmail, this.usuarioEdicaoLogin, this.usuarioEdicaoPassword)
     this.httpService.editarUsuario(this.usuarioEdicao.id,form.value.email, form.value.login, form.value.password)
     .subscribe(res => {
       this.ngOnInit()
     })
   }
 
-  onClickCadastrar(form){
+  onClickCadastrar(){
     this.editar = false
     this.cadastrar = true
-    console.log(form)
-    this.httpService.cadastro(form.value.email, form.value.login, form.value.password)
+  }
+
+  onClickSalvarCadastro(form){
+    this.httpService.cadastrarUsuario(form.value.email, form.value.login, form.value.password)
     .subscribe(res => {
       this.ngOnInit()
     })
+    this.cadastrar = false
   }
 
 }

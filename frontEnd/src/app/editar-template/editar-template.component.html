@@ -1,3 +1,54 @@
 <app-menu></app-menu>
 
-<p>Editar template</p>
+<div class="col main pt-3">
+        <h1 class="display-4 d-none d-sm-block"> Templates </h1>
+        <p class="lead d-none d-sm-block">Templates cadastrados no ClipMe</p> 
+        
+
+        <table class="table table-striped lead">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Acoes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let template of templates">
+                    <th scope="row">{{template.id}}</th>
+                    <td>{{template.name}}</td>
+                    <td>
+                      <button class="btn btn-outline-primary" style="margin-right:5px" (click)="editarTemplate(template)">Editar</button>
+                    </td>
+                  </tr>
+                </tbody> 
+        </table>
+        
+
+        <div [hidden]="!editar">
+          
+                <div class="container">
+                <p class="lead d-none d-sm-block">Editar usuário <strong>{{usuarioEdicaoLogin}}</strong></p>
+      
+                <form id="Editar" #u="ngForm" (ngSubmit)="onClickSalvar(u)">
+      
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="email" class="form-control" id="inputEmail" value="{{templateSelecionadoName}}" name="name" ngModel>
+                    </div>
+      
+                    <div class="form-group" *ngFor="let item of templateSelecionadoTitleList">
+                        <label>{{item}}</label>
+                        <input type="text" class="form-control" name="{{item}}" ngModel>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 40px">Salvar</button>
+          
+            
+                </form>
+                </div>
+      </div>
+        
+
+</div>
+

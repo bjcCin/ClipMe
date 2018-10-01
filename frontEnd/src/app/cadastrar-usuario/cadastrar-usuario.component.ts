@@ -20,7 +20,7 @@ export class CadastrarUsuarioComponent implements OnInit {
     console.log(form.value.senha)
     console.log(form.value.login)
 
-    this.httpService.cadastro(form.value.email, form.value.login, form.value.senha)
+    this.httpService.cadastrarUsuario(form.value.email, form.value.login, form.value.senha)
     .subscribe(
        data => {this.postData = JSON.stringify(data)},
        error => alert(error),

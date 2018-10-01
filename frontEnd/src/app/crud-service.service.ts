@@ -25,7 +25,7 @@ export class CrudServiceService {
 
   }
 
-  cadastro(email: String, login: String, password: String){
+  cadastrarUsuario(email: String, login: String, password: String){
     
     var json = JSON.stringify({email: email, login: login, password: password});
     console.log("service", json)
@@ -39,10 +39,27 @@ export class CrudServiceService {
   
 }
 
+  cadastrarTemplate(name: String, titleList: any){
+  var json = JSON.stringify({name: name, titleList: titleList});
+  
+  var cabe = new Headers();
+  cabe.append('Content-Type', 'application/json');
+  return this._http.post('/templates', 
+  json, {
+    headers: cabe
+  }).map(res=> res.json());
+
+}
+
   listarUsuarios(){
       return this._http.get("/users")
       .map(result => result);
   }
+
+  listarTemplates(){
+    return this._http.get("/template")
+    .map(result => result);
+}
 
   apagarUsuario(id){
     return this._http.delete(`/users/${id}`).map(result => result);
@@ -53,6 +70,17 @@ export class CrudServiceService {
     var cabe = new Headers();
     cabe.append('Content-Type', 'application/json');
     return this._http.put(`/users/${id}`, json,{
+      headers: cabe
+    }).map(result => result);
+  }
+
+  editarTemplate(id, name, titleList: any){
+    var json = JSON.stringify({name: name, titleList: titleList});
+    var cabe = new Headers();
+    console.log(json)
+    console.log("id",id)
+    cabe.append('Content-Type', 'application/json');
+    return this._http.put(`/template/${id}`, json,{
       headers: cabe
     }).map(result => result);
   }

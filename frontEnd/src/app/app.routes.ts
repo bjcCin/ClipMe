@@ -7,7 +7,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 export const ROUTES : Routes = [
     {path: '', component: LoginComponent},
-    {path: 'templateEdit', component: EditarTemplateComponent},
+    {path: 'editartemplate', component: EditarTemplateComponent},
     {path: 'cadastro', component: CadastrarUsuarioComponent},
     {path: 'usuarios', component: UsuariosComponent}
 ]
