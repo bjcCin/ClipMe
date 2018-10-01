@@ -1,33 +1,29 @@
 package br.ufpe.cin.clipMe.controller;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import br.ufpe.cin.clipMe.model.User;
 import br.ufpe.cin.clipMe.repository.UserRepository;
 
-@RestController
-@RequestMapping("/login")
 public class LoginController {
-
-	@Autowired
-	private UserRepository repository;
 	
-	@PostMapping
-	public boolean login(@Valid @RequestBody User user) {
+	private static LoginController instance = new LoginController();
+	
+	private LoginController(){
 		
-		if(user.getLogin() == null || user.getPassword() == null){
+	}
+	
+	public static LoginController getInstance() {
+		return instance;
+	}
+
+	public boolean login(UserRepository repository, User entity) {
+		
+		if(entity.getLogin() == null || entity.getPassword() == null){
 			return false;
 		}
 		
-		User _user = repository.findByLogin(user.getLogin());
+		User _entity = repository.findByLogin(entity.getLogin());
 		
-		return _user != null && user.getPassword().equals(_user.getPassword());
+		return _entity != null && entity.getPassword().equals(_entity.getPassword());
 	}
 	
 }
