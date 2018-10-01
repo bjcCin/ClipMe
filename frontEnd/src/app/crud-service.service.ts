@@ -49,8 +49,12 @@ export class CrudServiceService {
   }
 
   editarUsuario(id, email: String, login: String, password: String){
-    var json = JSON.stringify({id:id, email: email, login: login, password: password});
-    return this._http.put("/users", json).map(result => result);
+    var json = JSON.stringify({email: email, login: login, password: password});
+    var cabe = new Headers();
+    cabe.append('Content-Type', 'application/json');
+    return this._http.put(`/users/${id}`, json,{
+      headers: cabe
+    }).map(result => result);
   }
 
 }
