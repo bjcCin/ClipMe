@@ -21,8 +21,15 @@ public class UserController {
 		return instance;
 	}
 
-	public User add(InterfaceRepositoryUser repository, User entity) {
-		return repository.save(entity);
+	public String add(InterfaceRepositoryUser repository, User entity) {
+		if(repository.findByEmail(entity.getEmail()) != null){
+			return "email";
+		}else if(repository.findByLogin(entity.getLogin()) != null){
+			return "login";
+		}else{
+			repository.save(entity);
+			return "ok";
+		}
 	}
 	
 	public List<User> retrieveAll(InterfaceRepositoryUser repository) {

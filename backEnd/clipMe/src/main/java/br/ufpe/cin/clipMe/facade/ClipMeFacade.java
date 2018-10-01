@@ -84,7 +84,7 @@ public class ClipMeFacade {
 	//----------//
 	
 	@PostMapping("/users")
-	public User addUser(@Valid @RequestBody User entity) {
+	public String addUser(@Valid @RequestBody User entity) {
 		return userController.add(userRepository, entity);
 	}
 	
