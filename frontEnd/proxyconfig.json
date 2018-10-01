@@ -9,6 +9,19 @@
         "target": "http://localhost:8080",
         "secure": false,
         "logLevel": "debug"
+    },
+
+    "/template/*":{
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    },
+
+    "/templates/*":{
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
     }
+    
     
 }
