@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.httpService.login(login, senha)
     .subscribe(
        data => {this.postData = JSON.stringify(data)
-         if(data=="false"){
+         if(data==false){
            this.loginIncorreto = true
          } else {
           this.router.navigate(['/templateEdit'], { relativeTo: this.route });

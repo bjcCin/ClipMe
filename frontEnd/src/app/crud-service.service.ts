@@ -44,15 +44,13 @@ export class CrudServiceService {
       .map(result => result);
   }
 
-  
-  listarUsuariosTeste(){
-    var response =  [{
-      id:1,
-      username: "bruno",
-      email: "bruno@",
-      password: "teste"
-    }]
-    return Observable.of(response).delay(100)
-}
+  apagarUsuario(id){
+    return this._http.delete(`/users/${id}`).map(result => result);
+  }
+
+  editarUsuario(id, email: String, login: String, password: String){
+    var json = JSON.stringify({id:id, email: email, login: login, password: password});
+    return this._http.put("/users", json).map(result => result);
+  }
 
 }
