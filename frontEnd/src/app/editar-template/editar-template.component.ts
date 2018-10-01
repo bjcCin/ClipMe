@@ -48,10 +48,16 @@ export class EditarTemplateComponent implements OnInit {
     for(let i=1; i<tamanho.length; i++){
       templateList.push(tamanho[i])
     }
-   
+
+    console.log("tamanho", tamanho)
+    
     //console.log(this.templateSelecionado.id, this.templateSelecionadoName, templateList)
-    this.httpService.editarTemplate(this.templateSelecionado.id, this.templateSelecionadoName, templateList)
-    this.ngOnInit()
+    this.httpService.editarTemplate(this.templateSelecionado.id, form.value.name, templateList).subscribe(
+      res => {
+        this.ngOnInit()
+        this.editar = false
+      }
+    )
   }
 
 }

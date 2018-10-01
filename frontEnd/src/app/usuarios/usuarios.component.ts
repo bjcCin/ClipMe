@@ -26,6 +26,7 @@ export class UsuariosComponent implements OnInit {
     this.httpService.listarUsuarios().subscribe(res=>{
       this.usuarios = res.json();
       this.usuarios = Array.of(this.usuarios)[0];
+      console.log("teste", this.usuarios)
 
     })
   }
@@ -62,6 +63,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   onClickSalvarCadastro(form){
+    console.log(form.value.email, form.value.login, form.value.password)
     this.httpService.cadastrarUsuario(form.value.email, form.value.login, form.value.password)
     .subscribe(res => {
       this.ngOnInit()

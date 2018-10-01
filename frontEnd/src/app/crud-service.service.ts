@@ -57,7 +57,7 @@ export class CrudServiceService {
   }
 
   listarTemplates(){
-    return this._http.get("/template")
+    return this._http.get("/templates")
     .map(result => result);
 }
 
@@ -77,10 +77,10 @@ export class CrudServiceService {
   editarTemplate(id, name, titleList: any){
     var json = JSON.stringify({name: name, titleList: titleList});
     var cabe = new Headers();
-    console.log(json)
+    console.log("json", json)
     console.log("id",id)
     cabe.append('Content-Type', 'application/json');
-    return this._http.put(`/template/${id}`, json,{
+    return this._http.put(`/templates/${id}`, json,{
       headers: cabe
     }).map(result => result);
   }
