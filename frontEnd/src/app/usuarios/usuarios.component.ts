@@ -16,6 +16,10 @@ export class UsuariosComponent implements OnInit {
   usuarios: any
   editar = false
   usuarioEdicao: any
+  usuarioEdicaoLogin: String
+  usuarioEdicaoEmail: String
+  usuarioEdicaoPassword: String
+  cadastrar = false
 
   ngOnInit() {
 
@@ -39,13 +43,27 @@ export class UsuariosComponent implements OnInit {
   }
 
   editarUsuario(user){
+    this.cadastrar= false
     this.editar = true
     this.usuarioEdicao = user
+    this.usuarioEdicaoLogin = user.login
+    this.usuarioEdicaoEmail = user.email
+    this.usuarioEdicaoPassword = user.password  
   }
 
   onClickSalvar(form){
-    console.log(this.usuarioEdicao.id,form.value.email, form.value.login, form.value.password)
+    console.log(form)
     this.httpService.editarUsuario(this.usuarioEdicao.id,form.value.email, form.value.login, form.value.password)
+    .subscribe(res => {
+      this.ngOnInit()
+    })
+  }
+
+  onClickCadastrar(form){
+    this.editar = false
+    this.cadastrar = true
+    console.log(form)
+    this.httpService.cadastro(form.value.email, form.value.login, form.value.password)
     .subscribe(res => {
       this.ngOnInit()
     })

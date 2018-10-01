@@ -3,7 +3,9 @@
 <div class="col main pt-3">
 
     <h1 class="display-4 d-none d-sm-block"> Usuários </h1>
-    <p class="lead d-none d-sm-block">Usuários cadastrados no ClipMe</p>
+    <p class="lead d-none d-sm-block">Usuários cadastrados no ClipMe <a  href="javascript:" (click)="onClickCadastrar()" style="float: right"> <i class="fa fa-plus fa-2x"></i></a></p> 
+    
+
 
     <table class="table table-striped lead">
         <thead>
@@ -32,32 +34,59 @@
       <div [hidden]="!editar">
           
           <div class="container">
-          <p class="lead d-none d-sm-block">Editar usuário <strong>{{usuarioEdicao.login}}</strong></p>
+          <p class="lead d-none d-sm-block">Editar usuário <strong>{{usuarioEdicaoLogin}}</strong></p>
 
           <form id="Editar" #f="ngForm" (ngSubmit)="onClickSalvar(f)">
 
               <div class="form-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="{{usuarioEdicao.email}}" name="email" ngModel>
+                  <input type="email" class="form-control" id="inputEmail" value="{{usuarioEdicaoEmail}}" name="email" ngModel>
               </div>
 
               <div class="form-group">
                   <label>Login</label>
-                  <input type="text" class="form-control" id="inputLogin" placeholder="{{usuarioEdicao.login}}" name="login" ngModel>
+                  <input type="text" class="form-control" id="inputLogin" value="{{usuarioEdicaoLogin}}" name="login" ngModel>
               </div>
       
               <div class="form-group">
                   <label>Senha</label>
-                  <input type="password" class="form-control" id="inputPassword" placeholder="{{usuarioEdicao.password}}" name="password" ngModel>
+                  <input type="password" class="form-control" id="inputPassword" value="{{usuarioEdicaoPassword}}" name="password" ngModel>
               </div>
   
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-primary" style="margin-bottom: 40px">Salvar</button>
     
       
           </form>
           </div>
+</div>
 
-      </div>
+<div [hidden]="!cadastrar">
+          
+    <div class="container">
+    <p class="lead d-none d-sm-block">Cadastrar novo usuário</p>
+
+    <form id="Editar" #f="ngForm" (ngSubmit)="onClickCadastrar(f)">
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" id="inputEmail" value="{{usuarioEdicaoEmail}}" name="email" ngModel>
+        </div>
+
+        <div class="form-group">
+            <label>Login</label>
+            <input type="text" class="form-control" id="inputLogin" value="{{usuarioEdicaoLogin}}" name="login" ngModel>
+        </div>
+
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" id="inputPassword" value="{{usuarioEdicaoPassword}}" name="password" ngModel>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 40px">Cadastrar</button>
+
+    </form>
+    </div>
+
 </div>
 
 
