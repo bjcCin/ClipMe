@@ -10,6 +10,16 @@ import br.ufpe.cin.clipMe.model.Template;
 import br.ufpe.cin.clipMe.repository.TemplateRepository;
 
 public class TemplateController {
+	
+	private static TemplateController instance = new TemplateController();
+	
+	private TemplateController(){
+		
+	}
+
+	public static TemplateController getInstance() {
+		return instance;
+	}
 
 	public Template add(TemplateRepository repository, Template entity) {
 		return repository.save(entity);

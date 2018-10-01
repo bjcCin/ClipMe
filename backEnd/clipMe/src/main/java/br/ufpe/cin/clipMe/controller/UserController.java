@@ -11,6 +11,16 @@ import br.ufpe.cin.clipMe.repository.UserRepository;
 
 public class UserController {
 	
+	private static UserController instance = new UserController();
+	
+	private UserController(){
+		
+	}
+	
+	public static UserController getInstance() {
+		return instance;
+	}
+
 	public User add(UserRepository repository, User entity) {
 		return repository.save(entity);
 	}

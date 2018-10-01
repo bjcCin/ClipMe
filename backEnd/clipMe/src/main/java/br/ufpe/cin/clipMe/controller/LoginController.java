@@ -5,6 +5,16 @@ import br.ufpe.cin.clipMe.repository.UserRepository;
 
 public class LoginController {
 	
+	private static LoginController instance = new LoginController();
+	
+	private LoginController(){
+		
+	}
+	
+	public static LoginController getInstance() {
+		return instance;
+	}
+
 	public boolean login(UserRepository repository, User entity) {
 		
 		if(entity.getLogin() == null || entity.getPassword() == null){

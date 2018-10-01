@@ -32,6 +32,11 @@ public class ClipMeFacade {
 	
 	@Autowired
 	private TemplateRepository templateRepository;
+
+	//Singleton
+	private TemplateController templateController = TemplateController.getInstance();
+	private LoginController loginController = LoginController.getInstance();
+	private UserController userController = UserController.getInstance();
 	
 	
 	//-----------//
@@ -40,7 +45,7 @@ public class ClipMeFacade {
 	
 	@PostMapping("/login")
 	public boolean login(@Valid @RequestBody User user) {
-		return new LoginController().login(userRepository, user);
+		return loginController.login(userRepository, user);
 	}
 	
 	
@@ -50,27 +55,27 @@ public class ClipMeFacade {
 	
 	@PostMapping("/templates")
 	public Template addTemplate(@Valid @RequestBody Template template) {
-		return new TemplateController().add(templateRepository, template);
+		return templateController.add(templateRepository, template);
 	}
 	
 	@GetMapping("/templates")
 	public List<Template> retrieveAllTemplate() {
-		return new TemplateController().retrieveAll(templateRepository);
+		return templateController.retrieveAll(templateRepository);
 	}
 	
 	@GetMapping("/templates/{id}")
 	public Template retrieveTemplate(@PathVariable long id) {
-		return new TemplateController().retrieve(templateRepository, id);
+		return templateController.retrieve(templateRepository, id);
 	}
 
 	@DeleteMapping("/templates/{id}")
 	public void deleteTemplate(@PathVariable long id) {
-		new TemplateController().delete(templateRepository, id);
+		templateController.delete(templateRepository, id);
 	}
 
 	@PutMapping("/templates/{id}")
 	public ResponseEntity<Object> updateTemplate(@RequestBody Template template, @PathVariable long id) {
-		return new TemplateController().update(templateRepository, template, id);
+		return templateController.update(templateRepository, template, id);
 	}
 	
 	
@@ -80,27 +85,27 @@ public class ClipMeFacade {
 	
 	@PostMapping("/users")
 	public User addUser(@Valid @RequestBody User entity) {
-		return new UserController().add(userRepository, entity);
+		return userController.add(userRepository, entity);
 	}
 	
 	@GetMapping("/users")
 	public List<User> retrieveAllUser() {
-		return new UserController().retrieveAll(userRepository);
+		return userController.retrieveAll(userRepository);
 	}
 	
 	@GetMapping("/users/{id}")
 	public User retrieveUser(@PathVariable long id) {
-		return new UserController().retrieve(userRepository, id);
+		return userController.retrieve(userRepository, id);
 	}
 
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable long id) {
-		new UserController().delete(userRepository, id);
+		userController.delete(userRepository, id);
 	}
 
 	@PutMapping("/users/{id}")
 	public ResponseEntity<Object> updateUser(@RequestBody User entity, @PathVariable long id) {
-		return new UserController().update(userRepository, entity, id);
+		return userController.update(userRepository, entity, id);
 	}
 	
 }
