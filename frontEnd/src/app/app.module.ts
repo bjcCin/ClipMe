@@ -10,6 +10,8 @@ import { FormsModule }   from '@angular/forms';
 import { EditarTemplateComponent } from './editar-template/editar-template.component';
 import { CadastrarUsuarioComponent } from './cadastrar-usuario/cadastrar-usuario.component';
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     EditarTemplateComponent,
     CadastrarUsuarioComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

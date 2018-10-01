@@ -3,6 +3,8 @@ import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs";
 import {Headers} from '@angular/http'
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
 
 
 @Injectable()
@@ -34,8 +36,23 @@ export class CrudServiceService {
     json, {
       headers: cabe
     }).map(res=> res.json());
+  
+}
+
+  listarUsuarios(){
+      return this._http.get("/users")
+      .map(result => result);
+  }
 
   
+  listarUsuariosTeste(){
+    var response =  [{
+      id:1,
+      username: "bruno",
+      email: "bruno@",
+      password: "teste"
+    }]
+    return Observable.of(response).delay(100)
 }
 
 }
