@@ -26,16 +26,13 @@ export class CrudServiceService {
   }
 
   cadastrarUsuario(email: String, login: String, password: String){
-    
     var json = JSON.stringify({email: email, login: login, password: password});
-    console.log("service", json)
-    var params = 'json=' + json;
     var cabe = new Headers();
     cabe.append('Content-Type', 'application/json');
     return this._http.post('/users', 
     json, {
       headers: cabe
-    }).map(res=> res.json());
+    }).map(res=>  res);
   
 }
 

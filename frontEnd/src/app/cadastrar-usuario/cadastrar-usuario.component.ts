@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudServiceService } from '../crud-service.service';
+import {Router, Routes, ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -8,23 +9,30 @@ import { CrudServiceService } from '../crud-service.service';
 })
 export class CadastrarUsuarioComponent implements OnInit {
 
-  constructor(private httpService: CrudServiceService) { }
+  constructor(private httpService: CrudServiceService, private router: Router, private route: ActivatedRoute) { }
   postData :  string;
+  erroCadastro = false
+  mensagemError: String = ""
 
   ngOnInit() {
   }
   
   cadastro(form){
 
-    console.log(form.value)
-    console.log(form.value.senha)
-    console.log(form.value.login)
-
     this.httpService.cadastrarUsuario(form.value.email, form.value.login, form.value.senha)
     .subscribe(
-       data => {this.postData = JSON.stringify(data)},
-       error => alert(error),
-       () => console.log("acesso a webapi post ok...")
+       data => {
+        this.postData = data["_body"]
+        if(this.postData=="ok"){
+          this.router.navigate(['/'], { relativeTo: this.route })
+        } else if (this.postData=="email"){
+          this.erroCadastro = true
+          this.mensagemError = "email já cadastrado!"
+        } else {
+          this.erroCadastro = true
+          this.mensagemError = "login já existe!"
+        }
+      }
     );
   }
 

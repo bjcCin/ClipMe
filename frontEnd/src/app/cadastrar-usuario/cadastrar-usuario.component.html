@@ -1,5 +1,9 @@
 <div id="LoginForm">
 
+        <div [hidden]="!erroCadastro" class="alert alert-danger">
+                <strong>Falha ao cadastrar,</strong> {{ mensagemError }}
+        </div>
+
     <div class="container">
     <div class="login-form">
     <div class="main-div">
@@ -21,7 +25,7 @@
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="senha" ngModel>
             </div>
 
-            <button type="submit"  [routerLink] = "['/']" class="btn btn-primary">Cadastrar</button>
+            <button type="submit"  class="btn btn-primary">Cadastrar</button>
   
         </form>
       </div>
