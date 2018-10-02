@@ -17,3 +17,12 @@ O documento sobre a aplicação encontra-se disponível [aqui](https://github.co
 
 
 A apresentação do projeto (PPT) encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/raw/master/Entregas/APS%20-%20Entrega%201.pdf).
+
+
+O documento do Astah encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/raw/master/Entregas/Entrega-1).
+
+
+O código front-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/frontEnd).
+
+
+O código back-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/backEnd/clipMe).
