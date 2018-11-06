@@ -16,7 +16,6 @@ export class CrudServiceService {
     var json = JSON.stringify({login: login, password: senha});
     var params = 'json=' + json;
     var cabe = new Headers();
-    console.log(params)
     cabe.append('Content-Type', 'application/json');
     return this._http.post('/login', 
     json, {
@@ -38,10 +37,21 @@ export class CrudServiceService {
 
   cadastrarTemplate(name: String, titleList: any){
   var json = JSON.stringify({name: name, titleList: titleList});
-  
   var cabe = new Headers();
   cabe.append('Content-Type', 'application/json');
   return this._http.post('/templates', 
+  json, {
+    headers: cabe
+  }).map(res=> res.json());
+
+}
+
+cadastrarClipping(clippingName: String, idUser, itemList: any){
+
+  var json = JSON.stringify({clippingName: clippingName, idUser: idUser,itemList: itemList});
+  var cabe = new Headers();
+  cabe.append('Content-Type', 'application/json');
+  return this._http.post('/clipping', 
   json, {
     headers: cabe
   }).map(res=> res.json());
@@ -73,9 +83,9 @@ export class CrudServiceService {
 
   editarTemplate(id, name, titleList: any){
     var json = JSON.stringify({name: name, titleList: titleList});
+    console.log(json)
     var cabe = new Headers();
-    console.log("json", json)
-    console.log("id",id)
+
     cabe.append('Content-Type', 'application/json');
     return this._http.put(`/templates/${id}`, json,{
       headers: cabe

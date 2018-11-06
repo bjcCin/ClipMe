@@ -12,6 +12,7 @@ import { CadastrarUsuarioComponent } from './cadastrar-usuario/cadastrar-usuario
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { CriarClippingComponent } from './criar-clipping/criar-clipping.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     CadastrarUsuarioComponent,
     LoginComponent,
     MenuComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    CriarClippingComponent
   ],
   imports: [
     BrowserModule,

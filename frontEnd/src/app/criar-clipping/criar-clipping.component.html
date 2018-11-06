@@ -1,0 +1,47 @@
+<app-menu></app-menu>
+
+
+<div class="col main pt-3">
+  
+  <h1 class="display-4 d-none d-sm-block">Criação de Clippings </h1>
+  <p class="lead d-none d-sm-block">Criar clippings no ClipMe</p> 
+
+    <div class="form-group">
+        <label>Selecione um template</label>
+        <select class="form-control" name="templateSelecionado" [(ngModel)]="templateSelecionado" (change)="checkChange()" >
+            <option *ngFor="let template of templates" [value]="template.id">
+              {{template.name}}
+            </option>
+        </select>
+    </div>
+    
+
+    <div class="form-group">
+        <label>Selecione um usuário</label>
+        <select class="form-control" [(ngModel)]="userSelecionado" name="userSelecionado" (change)="checkChange()">
+            <option *ngFor="let user of usuarios" [value]="user.id">
+              {{user.login}}
+            </option>
+        </select>
+    </div>
+
+    <div *ngIf="editar">
+          <form #f="ngForm" (ngSubmit)="criarClipping(f)">
+
+              <div class="form-group">
+                  <label>Titulo</label>
+                  <input type="text" class="form-control" id="inputTitulo" name="titulo" [(ngModel)] = >
+              </div>
+
+              <div class="form-group" *ngFor="let item of templateSelecionadoTitleList; let index= index">
+                  <label>{{item}}</label>
+                  <input type="text" class="form-control" name="{{index}}" ngModel>
+              </div>
+
+              <button class="btn btn-primary">Criar</button>
+          </form>
+
+    </div>
+
+
+</div>
