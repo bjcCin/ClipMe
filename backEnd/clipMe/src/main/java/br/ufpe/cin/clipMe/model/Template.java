@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Template {
 	
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "template_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 

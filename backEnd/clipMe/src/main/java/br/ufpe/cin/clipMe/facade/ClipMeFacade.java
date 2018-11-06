@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ufpe.cin.clipMe.controller.ClippingController;
 import br.ufpe.cin.clipMe.controller.LoginController;
 import br.ufpe.cin.clipMe.controller.TemplateController;
 import br.ufpe.cin.clipMe.controller.UserController;
+import br.ufpe.cin.clipMe.model.Clipping;
 import br.ufpe.cin.clipMe.model.Template;
 import br.ufpe.cin.clipMe.model.User;
+import br.ufpe.cin.clipMe.repository.InterfaceRepositoryClipping;
 import br.ufpe.cin.clipMe.repository.InterfaceRepositoryTemplate;
 import br.ufpe.cin.clipMe.repository.InterfaceRepositoryUser;
 
@@ -32,11 +35,15 @@ public class ClipMeFacade {
 	
 	@Autowired
 	private InterfaceRepositoryTemplate templateRepository;
+	
+	@Autowired
+	private InterfaceRepositoryClipping clippingRepository;
 
 	//Singleton
 	private TemplateController templateController = TemplateController.getInstance();
 	private LoginController loginController = LoginController.getInstance();
 	private UserController userController = UserController.getInstance();
+	private ClippingController clippingController = ClippingController.getInstance();
 	
 	
 	//-----------//
@@ -106,6 +113,36 @@ public class ClipMeFacade {
 	@PutMapping("/users/{id}")
 	public ResponseEntity<Object> updateUser(@RequestBody User entity, @PathVariable long id) {
 		return userController.update(userRepository, entity, id);
+	}
+	
+	
+	//--------------//
+	//   CLIPPING   //
+	//--------------//
+
+	@PostMapping("/clipping")
+	public Clipping addClipping(@Valid @RequestBody Clipping entity) {
+		return clippingController.add(clippingRepository, entity);
+	}
+
+	@GetMapping("/clipping")
+	public List<Clipping> retrieveAllClipping() {
+		return clippingController.retrieveAll(clippingRepository);
+	}
+
+	@GetMapping("/clipping/{id}")
+	public Clipping retrieveClipping(@PathVariable long id) {
+		return clippingController.retrieve(clippingRepository, id);
+	}
+
+	@DeleteMapping("/clipping/{id}")
+	public void deleteClipping(@PathVariable long id) {
+		clippingController.delete(clippingRepository, id);
+	}
+
+	@PutMapping("/clipping/{id}")
+	public ResponseEntity<Object> updateClipping(@RequestBody Clipping entity, @PathVariable long id) {
+		return clippingController.update(clippingRepository, entity, id);
 	}
 	
 }
