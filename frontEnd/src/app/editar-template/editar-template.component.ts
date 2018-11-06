@@ -13,51 +13,43 @@ export class EditarTemplateComponent implements OnInit {
   
   templates: any
   editar = false
-  templateSelecionado: any
+  templateSelecionadoId: Number
   templateSelecionadoName: String
   templateSelecionadoTitleList = []
 
+  templateTeste = []
+
   ngOnInit() {
-
     this.httpService.listarTemplates().subscribe(res=>{
-      this.templates = res.json();
+      this.templates = res.json()
       this.templates = Array.of(this.templates)[0]
-
-      this.templateSelecionado = this.templates[0]
-      
-      console.log(this.templates)
-
     })
   }
 
   editarTemplate(template){
-    this.editar = true
-    this.templateSelecionado = template
+    this.templateSelecionadoId = template.id
     this.templateSelecionadoName = template.name
-    this.templateSelecionadoTitleList = template.titleList
-    //console.log(this.templateSelecionado)
-
+    this.templateSelecionadoTitleList = template.titleList.slice(0).reverse();
+    this.editar = true
   }
 
   onClickSalvar(form){
-    //console.log(form)
-    var tamanho = Object.values(form.value)
+    var values = Object.values(form.value)
+    var nome = values[values.length-1]
+    var lists = values.slice(0,values.length-1)
+    console.log("nome", nome)
+    console.log("lists", lists)
 
-    //console.log("tamanho ", tamanho[0])
-    var templateList = []
-    for(let i=1; i<tamanho.length; i++){
-      templateList.push(tamanho[i])
-    }
-
-    console.log("tamanho", tamanho)
-    
-    //console.log(this.templateSelecionado.id, this.templateSelecionadoName, templateList)
-    this.httpService.editarTemplate(this.templateSelecionado.id, form.value.name, templateList).subscribe(
+    this.httpService.editarTemplate(this.templateSelecionadoId, nome, lists).subscribe(
       res => {
-        this.ngOnInit()
         this.editar = false
+        this.templateSelecionadoTitleList = []
+        this.ngOnInit()
       }
     )
+    this.editar = false;
   }
+
+
 
 }

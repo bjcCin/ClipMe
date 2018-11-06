@@ -26,8 +26,6 @@ export class UsuariosComponent implements OnInit {
     this.httpService.listarUsuarios().subscribe(res=>{
       this.usuarios = res.json();
       this.usuarios = Array.of(this.usuarios)[0];
-      console.log("teste", this.usuarios)
-
     })
   }
 
