@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  facade:
+    container_name: facade-clipme
+    restart: always
+    build: .
+    ports:
+      - "8080:8081"
+      

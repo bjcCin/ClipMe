@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - 33060:3306
+    networks:
+      - clipmenet
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: clipme
+  
+  clipme:
+    container_name: clipme
+    restart: always
+    build: ./backCompleteJava
+    ports:
+      - 8081:8080
+    networks:
+      - clipmenet
+    depends_on:
+      - db
+    links:
+      - db
+  
+  facade:
+    container_name: facade-clipme
+    restart: always
+    build: ./facade
+    ports:
+      - "8080:8081"
+    networks:
+      - clipmenet
+    depends_on:
+      - db
+      - clipme
+    links:
+      - clipme
+
+  front:
+    container_name: front-clipme
+    restart: always
+    build: ../../frontEnd
+    ports:
+      - "4200:4200"
+    networks:
+      - clipmenet
+    depends_on:
+      - facade
+
+networks:
+  clipmenet:
+    driver: bridge
+
+volumes:
+    db_data:
+    
