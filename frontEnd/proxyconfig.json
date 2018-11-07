@@ -1,31 +1,31 @@
 {
     "/users/*":{
-        "target": "http://localhost:8080",
+        "target": "http://facade:8081",
         "secure": false,
         "logLevel": "debug"
     },
     
     "/login/*":{
-        "target": "http://localhost:8080",
+        "target": "http://facade:8081",
         "secure": false,
         "logLevel": "debug"
     },
 
     "/template/*":{
-        "target": "http://localhost:8080",
+        "target": "http://facade:8081",
         "secure": false,
         "logLevel": "debug"
     },
 
     "/templates/*":{
-        "target": "http://localhost:8080",
+        "target": "http://facade:8081",
         "secure": false,
         "logLevel": "debug"
     },
 
     
     "/clipping/*":{
-        "target": "http://localhost:8080",
+        "target": "http://facade:8081",
         "secure": false,
         "logLevel": "debug"
     }
