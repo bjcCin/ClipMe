@@ -13,10 +13,16 @@ export class CriarClippingComponent implements OnInit {
 
   templates = []
   usuarios = []
+  clippings = []
   templateSelecionado
   userSelecionado
   editar: Boolean = false
   templateSelecionadoTitleList
+  clippingTitulo
+  isVisualizar = false
+  clippingVisualizar
+  usuarioVisualizar
+
 
 
   ngOnInit() {
@@ -30,12 +36,21 @@ export class CriarClippingComponent implements OnInit {
       this.usuarios = res.json();
       this.usuarios = Array.of(this.usuarios)[0]
     })
-    
+
+    this.httpService.listarClippings().subscribe(res=>{
+      this.clippings = res.json();
+      this.clippings = Array.of(this.clippings)[0];
+      console.log("clippings", this.clippings)
+    })
+
   }
 
-
-  onClickTemplate(){
-    console.log(this.templateSelecionado)
+  deletarClipping(id){
+    this.httpService.apagarClipping(id).subscribe(
+      res => {
+        this.ngOnInit()
+      }
+    )
 
   }
 
@@ -55,13 +70,30 @@ export class CriarClippingComponent implements OnInit {
 
   }
 
-  criarClipping(u){
+  vizualizar(id){
+    this.httpService.listarClippingsPorId(id).subscribe(
+      res => {
+        this.clippingVisualizar = res.json()
+        this.clippingVisualizar = Array.of(this.clippingVisualizar)[0];
+        this.httpService.listarUsuarioPorId(this.clippingVisualizar.idUser).subscribe(
+          res => {
+            this.usuarioVisualizar = res.json()
+            this.usuarioVisualizar = Array.of(this.usuarioVisualizar)[0];
+            this.isVisualizar = true
+          }
+        )
+        
+      }
+    )
 
+  }
+
+  criarClipping(u){
     console.log("titulo", this.templateSelecionadoTitleList)
     console.log("descricao", u.value)
+    console.log("titulo", this.clippingTitulo)
 
     var itemList = []
-
 
     for(let i=0; i < this.templateSelecionadoTitleList.length;i++){
 
@@ -74,8 +106,7 @@ export class CriarClippingComponent implements OnInit {
 
     }
 
-
-    this.httpService.cadastrarClipping(u.value.titulo,this.userSelecionado,itemList).subscribe(
+    this.httpService.cadastrarClipping(this.clippingTitulo,this.userSelecionado,itemList).subscribe(
       res => {
         this.ngOnInit()
         this.editar = false

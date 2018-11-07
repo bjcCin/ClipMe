@@ -25,12 +25,13 @@
         </select>
     </div>
 
-    <div *ngIf="editar">
+    <div *ngIf="editar" style="border: gray">
+          <h4>Criando clipping</h4>
           <form #f="ngForm" (ngSubmit)="criarClipping(f)">
 
               <div class="form-group">
                   <label>Titulo</label>
-                  <input type="text" class="form-control" id="inputTitulo" name="titulo" [(ngModel)] = >
+                  <input type="text" class="form-control" name="titulo" [(ngModel)]="clippingTitulo">
               </div>
 
               <div class="form-group" *ngFor="let item of templateSelecionadoTitleList; let index= index">
@@ -41,6 +42,39 @@
               <button class="btn btn-primary">Criar</button>
           </form>
 
+    </div>
+
+
+    <table class="table table-striped lead" style="margin-top: 4%">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Titulo</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let clipping of clippings">
+              <th scope="row">{{clipping.id}}</th>
+              <td>{{clipping.clippingName}}</td>
+              <td>
+                  <button class="btn btn-outline-primary" style="margin-left: 1%" (click)="vizualizar(clipping.id)">Visualizar</button>
+                  <button class="btn btn-outline-danger" style="margin-left: 1%" (click)="deletarClipping(clipping.id)">Deletar</button>
+              </td>
+            </tr>
+          </tbody> 
+    </table>
+
+
+    <div *ngIf="isVisualizar" style="margin-top: 3%; border-left: 6px solid green; background-color: lightgrey;">
+      <div style="margin-left: 10px">
+          <h4>{{clippingVisualizar.clippingName}}</h4>
+          <h5>{{usuarioVisualizar.login}}</h5>
+          <div *ngFor="let itemList of clippingVisualizar.itemList">
+            <b>{{itemList.title}}</b>
+            <p>{{itemList.description}}</p>
+          </div>
+      </div>
     </div>
 
 

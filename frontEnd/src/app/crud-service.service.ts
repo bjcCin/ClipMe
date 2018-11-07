@@ -60,16 +60,35 @@ cadastrarClipping(clippingName: String, idUser, itemList: any){
 
   listarUsuarios(){
       return this._http.get("/users")
-      .map(result => result);
+      .map(result => result)
+  }
+
+  listarUsuarioPorId(id){
+    return this._http.get(`/users/${id}`)
+    .map(result => result)
   }
 
   listarTemplates(){
     return this._http.get("/templates")
-    .map(result => result);
+    .map(result => result)
 }
+
+  listarClippings(){
+    return this._http.get("/clipping")
+    .map(result => result)
+  }
+
+  listarClippingsPorId(id){
+    return this._http.get(`/clipping/${id}`)
+    .map(result => result)
+  }
 
   apagarUsuario(id){
     return this._http.delete(`/users/${id}`).map(result => result);
+  }
+
+  apagarClipping(id){
+    return this._http.delete(`/clipping/${id}`).map(result => result);
   }
 
   editarUsuario(id, email: String, login: String, password: String){

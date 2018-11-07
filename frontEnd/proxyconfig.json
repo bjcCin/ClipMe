@@ -21,6 +21,13 @@
         "target": "http://localhost:8080",
         "secure": false,
         "logLevel": "debug"
+    },
+
+    
+    "/clipping/*":{
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
     }
     
     
