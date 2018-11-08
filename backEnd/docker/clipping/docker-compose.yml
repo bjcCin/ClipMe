@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - 33060:3306
+    networks:
+      - clipmenet
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: clipme
+
+  clipme:
+    container_name: clipme
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    networks:
+      - clipmenet
+    depends_on:
+      - db
+    links:
+      - db
+       
+volumes:
+    db_data:
+
+networks:
+  clipmenet:

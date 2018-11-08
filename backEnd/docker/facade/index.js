@@ -9,8 +9,8 @@ const name = "FACADE"
 app.use(bodyParser.json());
 
 const services = {
-    users: "clipme",
-    clipping: "clipme"
+    user: "user",
+    clipping: "clipping"
 }
 
 var router = express.Router(); 
@@ -27,28 +27,27 @@ router.get('/', function(req, res) {
 //LOGIN
 router.route('/login')
     .post(function(req, res){
-        console.log('post');
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     });
 
 //USERS
 router.route('/users')
     .get(function(req, res) {
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     })
     .post(function(req, res){
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     });
 
 router.route('/users/:id')
     .get(function(req, res) {
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     })
     .delete(function(req, res) {
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     })
     .put(function(req, res) {
-        controller(services.users, req, res)
+        controller(services.user, req, res)
     });
 
 //TEMPLATES
@@ -98,7 +97,6 @@ function controller(service, req, res){
     let url = req.url
     let accept = req.headers.accept
     let json = req.body
-    // console.log(method, id, body, url, accept)
 
     var options = {
         url: `http://${service}:8080${url}`,
@@ -124,7 +122,6 @@ function controller(service, req, res){
     }
 
     request(options, function (error, data, body){
-        // console.log(body)
         switch(method){
             case 'GET':
                 res.json(JSON.parse(body));
@@ -151,5 +148,5 @@ app.use(function(req, res){
 });
 
 app.listen(port, function (){
-    console.log(`app listening on port ${port}!`)
+    console.log(`${name} listening on port ${port}!`)
 });
