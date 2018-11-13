@@ -15,8 +15,14 @@ O documento sobre a aplicação que contém a definição das equipes e escopo d
 ### Entrega 1
 
 A primeira apresentação do projeto (PPT) encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/raw/master/Entregas/APS%20-%20Entrega%201.pdf).
+
+
 O documento do Astah encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/raw/master/Entregas/Entrega-1).
+
+
 O código front-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/frontEnd).
+
+
 O código back-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/backEnd/clipMe).
 
 
@@ -24,6 +30,12 @@ O código back-end encontra-se disponível [aqui](https://github.com/bjcCin/Clip
 ### Entrega 2
 
 A segunda entrega consiste no refinamento do projeto e inclusão da arquitetura SOA (diagramas e implemetação).
+
+
 A segunda apresentação do projeto (PPT) encontra-se disponível [aqui](https://docs.google.com/presentation/d/1E19e67a0YTPAIPEYoseiDxsXwxQtH41Sa0lQbpqC5JU/edit?usp=sharing).
+
+
 O código front-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/frontEnd).
+
+
 O código back-end encontra-se disponível [aqui](https://github.com/bjcCin/ClipMe/tree/master/backEnd/clipMe).
